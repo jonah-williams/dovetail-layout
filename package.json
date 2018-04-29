@@ -1,0 +1,28 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "create-react-app": "^1.5.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "react-redux": "^5.0.7"
+  },
+  "devDependencies": {
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.3.0"
+  },
+  "proxy": "https://dovetail-layout.glitch.me",
+  "engines": {
+    "node": "8.x"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "license": "MIT"
+}
