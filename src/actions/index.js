@@ -29,3 +29,8 @@ export const changePinWidth = width => ({
   type: types.SET_SIMPLE_PIN_LAYOUT_WIDTH,
   width
 })
+
+export const changeJointPosition = position => ({
+  type: types.UPDATE_JOINT_POSITION,
+  position
+})

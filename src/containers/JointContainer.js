@@ -5,7 +5,8 @@ import {
   changeJointLength,
   changePinCount,
   changePinSlope,
-  changePinWidth
+  changePinWidth,
+  changeJointPosition
 } from '../actions'
 import JointForm from '../components/JointForm'
 
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   changePinCount: (count) => dispatch(changePinCount(count)),
   changePinSlope: (slope) => dispatch(changePinSlope(slope)),
   changePinWidth: (width) => dispatch(changePinWidth(width)),
+  changeJointPosition: (position) => dispatch(changeJointPosition(position)),
 })
 
 export default connect(

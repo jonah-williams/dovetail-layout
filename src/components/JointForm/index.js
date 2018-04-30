@@ -138,6 +138,25 @@ const JointForm = (props) => (
                 </div>
               </div>
             </form>
+
+            <form className="form-horizontal">
+              <div className="form-group">
+                <label htmlFor="jointPosition" className="col-sm-8 control-label">Joint position</label>
+                <div className="col-sm-4">
+                  <input 
+                    id="jointPosition"
+                    className="form-control"
+                    type="range"
+                    inputMode="none"
+                    min="0"
+                    max="2"
+                    step="0.01"
+                    value={props.jointPosition}
+                    onChange={(event) => props.changeJointPosition(Number(event.target.value))}
+                  />
+                </div>
+              </div>
+            </form>
           </div>
         </div>
         <div className="col-sm-6">
@@ -175,6 +194,9 @@ JointForm.propTypes = {
   
   pinWidth: PropTypes.number.isRequired,
   changePinWidth: PropTypes.func.isRequired,
+  
+  jointPosition: PropTypes.number.isRequired,
+  changeJointPosition: PropTypes.func.isRequired,
 }
 
 export default JointForm

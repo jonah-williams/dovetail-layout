@@ -61,7 +61,7 @@ export default function SceneManager(canvas) {
     
     const tailBoard = createTailBoard(props)
     tailBoard.name = TAIL_BOARD
-    tailBoard.applyMatrix(new THREE.Matrix4().makeTranslation( 0, 0, 2 ))
+    tailBoard.applyMatrix(new THREE.Matrix4().makeTranslation( 0, 0, props.jointPosition ))
     scene.add(tailBoard)
     
     const pinBoard = createPinBoard(props)
@@ -70,6 +70,9 @@ export default function SceneManager(canvas) {
   }
   
   function createTailBoard(props) {
+    const material = new THREE.MeshBasicMaterial({color: 0x4286f4})
+    const wireframeMaterial = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true, transparent: true})
+    
     let shape = new THREE.Shape()
     shape.moveTo(0, 0)
     
@@ -86,12 +89,15 @@ export default function SceneManager(canvas) {
       bevelEnabled: false
     }
     const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings)
-    const material = new THREE.MeshNormalMaterial()
-    return new THREE.Mesh(geometry, material)
+    const wireframeMesh = new THREE.Mesh(geometry, wireframeMaterial)
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.add(wireframeMesh)
+    return mesh
   }
   
   function createPinBoard(props) {
-    const material = new THREE.MeshNormalMaterial()
+    const material = new THREE.MeshBasicMaterial({color: 0xf441b5})
+    const wireframeMaterial = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true, transparent: true})
     const pinsGroup = new THREE.Group()
     
     for (var pathSegment of props.pinBoard.pinPathSegments) {
@@ -106,14 +112,19 @@ export default function SceneManager(canvas) {
         bevelEnabled: false
       }
       const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings)
-      pinsGroup.add(new THREE.Mesh(geometry, material))
+      const wireframeMesh = new THREE.Mesh(geometry, wireframeMaterial)
+      const mesh = new THREE.Mesh(geometry, material)
+      mesh.add(wireframeMesh)
+      pinsGroup.add(mesh)
     }
     
     const boardGeometry = new THREE.BoxGeometry(props.pinBoard.length, props.pinBoard.height, props.pinBoard.thickness);
     boardGeometry.applyMatrix(new THREE.Matrix4().makeRotationY(Math.PI/2))
     boardGeometry.applyMatrix(new THREE.Matrix4().makeTranslation(props.pinBoard.thickness / 2, props.pinBoard.height / 2, -1 * props.pinBoard.length / 2 ))
-    pinsGroup.add(new THREE.Mesh(boardGeometry, material))
-    
+    const wireframeMesh = new THREE.Mesh(boardGeometry, wireframeMaterial)
+    const boardMesh = new THREE.Mesh(boardGeometry, material)
+    boardMesh.add(wireframeMesh)
+    pinsGroup.add(boardMesh)
     return pinsGroup
   }
   

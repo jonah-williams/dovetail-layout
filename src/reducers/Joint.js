@@ -13,6 +13,8 @@ const initialState = {
   pinCount: 3,
   pinSlope: 6.0,
   pinWidth: 0.5,
+  
+  jointPosition: 0,
 }
 
 export default function joint(state = initialState, action) {
@@ -71,6 +73,11 @@ export default function joint(state = initialState, action) {
     case types.REMOVE_CUSTOM_PIN:
       return state
     
+    case types.UPDATE_JOINT_POSITION:
+      return Object.assign({}, state, {
+        jointPosition: action.position
+      })
+      
     default:
       return state
   }

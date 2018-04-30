@@ -51,6 +51,7 @@ const mapStateToProps = state => {
   pinPathSegments.push({start: {x: 0, y: state.joint.jointLength - pinBaseHeight / 2}, points: topHalfPin})
   
   return {
+    jointPosition: state.joint.jointPosition,
     tailBoard: {
       length: state.joint.jointLength * 1.5,
       height: state.joint.jointLength,
