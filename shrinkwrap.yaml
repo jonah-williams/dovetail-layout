@@ -5,6 +5,7 @@ dependencies:
   react-redux: 5.0.7
   react-scripts: 1.1.4
   redux: 4.0.0
+  three: 0.92.0
 devDependencies:
   enzyme: 3.3.0
   enzyme-adapter-react-16: 1.1.1
@@ -7973,6 +7974,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+  /three/0.92.0:
+    dev: false
+    resolution:
+      integrity: sha1-jT0fWviQ5i2n9MtF0gwJ+lEFfc0=
   /throat/3.2.0:
     dev: false
     resolution:
@@ -8889,3 +8894,4 @@ specifiers:
   react-redux: ^5.0.7
   react-scripts: 1.1.4
   redux: ^4.0.0
+  three: ^0.92.0
