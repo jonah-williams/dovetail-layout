@@ -1,19 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and then updated to use [Redux](https://github.com/reactjs/redux) to manage application state.
+# A dovetail layout tool
 
-## Remixing in Glitch
+## The problem
 
-To make the auto-reload feature work, edit the `proxy` option in `package.json` to point to your Glitch app.
+Dovetails provide a strong and attractive joint but they present the woodworker with a number of decisions which will dictact the appearance of the final joint. How many pins and tails should they use, how large should they be, how should they be spaced over the length of the joint?
 
-## Working with Redux
+## The app
 
-See the [redux.js.org](https://redux.js.org) and [usage-with-react](https://redux.js.org/basics/usage-with-react) docs.
+I wanted a quick way to preview diffent joint layouts before committing to a design so I built a little app here which allows you to specify the dimensions and configuration of a joint and render a preview of the resulting piece to check your proportions.
 
-## Building a React App with create-react-app
+See it in action at [https://dovetail-layout.glitch.me/](https://dovetail-layout.glitch.me/)
 
-See the [create-react-app readme](https://github.com/facebook/create-react-app/blob/next/README.md)
+## Implementation details
+This project was remixed from my [glitch-create-react-redux-app](https://glitch.com/~glitch-create-react-redux-app) which provided a template React/Redux app.
 
-Note: the introduction of Redux here has changed the file structure somewhat compared to what is referenced in those docs.
-
-## Running tests
-
-Run `npm test` in the Glitch console to start a test watcher.
+I built this as an excuse to experiment with a couple of tools:
+* Using Glitch.com as an editor/hosting/collaboration environment.
+* Getting more practice setting up a React and Redux app from scratch and the decisions available during that process.
+* Three.js for WebGL rendering and the data flow patterns to drive a 3D model/viewport.
