@@ -61,7 +61,12 @@ export default function SceneManager(canvas) {
     
     const tailBoard = createTailBoard(props)
     tailBoard.name = TAIL_BOARD
+    tailBoard.applyMatrix(new THREE.Matrix4().makeTranslation( 0, 0, 2 ))
     scene.add(tailBoard)
+    
+    const pinBoard = createPinBoard(props)
+    pinBoard.name = PIN_BOARD
+    scene.add(pinBoard)
   }
   
   function createTailBoard(props) {
@@ -81,14 +86,35 @@ export default function SceneManager(canvas) {
       bevelEnabled: false
     }
     const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings)
-    const wireframe = new THREE.WireframeGeometry(geometry)
-    const line = new THREE.LineSegments(wireframe)
-    line.material.depthTest = false
-    line.material.opactity = 0.5
-    line.material.transparent = true
-    
     const material = new THREE.MeshNormalMaterial()
     return new THREE.Mesh(geometry, material)
+  }
+  
+  function createPinBoard(props) {
+    const material = new THREE.MeshNormalMaterial()
+    const pinsGroup = new THREE.Group()
+    
+    for (var pathSegment of props.pinBoard.pinPathSegments) {
+      let shape = new THREE.Shape()
+      const initialPostion = pathSegment.start
+      shape.moveTo(initialPostion.x, initialPostion.y)
+      for (var coordinate of pathSegment.points) {
+        shape.lineTo(coordinate.x, coordinate.y)
+      }
+      const extrudeSettings = {
+        amount: props.tailBoard.thickness,
+        bevelEnabled: false
+      }
+      const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings)
+      pinsGroup.add(new THREE.Mesh(geometry, material))
+    }
+    
+    const boardGeometry = new THREE.BoxGeometry(props.pinBoard.length, props.pinBoard.height, props.pinBoard.thickness);
+    boardGeometry.applyMatrix(new THREE.Matrix4().makeRotationY(Math.PI/2))
+    boardGeometry.applyMatrix(new THREE.Matrix4().makeTranslation(props.pinBoard.thickness / 2, props.pinBoard.height / 2, -1 * props.pinBoard.length / 2 ))
+    pinsGroup.add(new THREE.Mesh(boardGeometry, material))
+    
+    return pinsGroup
   }
   
   this.update = function(props) {
