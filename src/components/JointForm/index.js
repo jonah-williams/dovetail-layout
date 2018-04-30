@@ -162,7 +162,7 @@ const JointForm = (props) => (
         <div className="col-sm-6">
           <div className="row">
             <div className="col-sm-12">
-              add diagram here
+              <img className="img-fluid dovetail-example" alt="A woodworking dovetail joint" src="https://cdn.glitch.com/0db6dd24-4f81-4170-b619-b87f87218831%2F1026px-Joinery-throughdovetail.svg.png?1525069862267" />
             </div>
           </div>
         </div>
