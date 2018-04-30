@@ -7,6 +7,8 @@ export default (containerElement) => {
   bindEventListeners()
   render()
   
+  return sceneManager
+  
   function createCanvas(document, containerElement) {
     const canvas = document.createElement('canvas')
     containerElement.appendChild(canvas)

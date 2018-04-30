@@ -5,10 +5,15 @@ import './Projection.css';
 // https://itnext.io/how-to-use-plain-three-js-in-your-react-apps-417a79d926e0
 export default class ThreeContainer extends Component {
   componentDidMount() {
-    threeEntryPoint(this.threeRootElement)
+    this.sceneManager = threeEntryPoint(this.threeRootElement)
+    this.sceneManager.update(this.props)
   }
   
   render () {
+    if (this.sceneManager) {
+      this.sceneManager.update(this.props)
+    }
+    
     return (
       <div className="row">
         <div className="col-sm-12">
